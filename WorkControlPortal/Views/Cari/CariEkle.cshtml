@@ -1,0 +1,50 @@
+﻿@model WorkControlPortal.Models.Cariler
+@{
+    ViewBag.Title = "CariEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post" style="margin-top:15px" autocomplete="off">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 ">
+                <label class="form-label">Kod</label>
+                <input type="text" class="form-control" name="Kod" required>
+
+
+                <label class="form-label">Ünvan</label>
+                <input type="text" class="form-control" name="Unvan" required>
+
+
+                <label class="form-label">Departman Seçiniz</label>
+                @Html.DropDownListFor(m => m.Departmanlar.Referans, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+
+                <label class="form-label">İlgili</label>
+                <input type="text" class="form-control" name="Ilgili1" required>
+
+
+                <label class="form-label">Telefon</label>
+                <input type="tel" class="form-control" name="Ilgili1_Telefon1" required>
+
+
+                <label class="form-label">E-Mail</label>
+                <input type="email" class="form-control" name="Ilgili1_Email" required>
+
+                <div style="margin-top:20px">
+                    <button class="btn btn-primary" type="submit" id="btn1">Cari Ekle</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Eklendi.", "success");
+    });
+</script>

@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EMSEYCRMDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cariler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="24" />
+          <Property Name="Unvan" Type="varchar" MaxLength="50" />
+          <Property Name="Sehir" Type="varchar" MaxLength="50" />
+          <Property Name="Telefon1" Type="varchar" MaxLength="50" />
+          <Property Name="Telefon2" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili1" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili1_Unvan" Type="varchar" MaxLength="250" />
+          <Property Name="Ilgili1_Telefon1" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili1_Telefon2" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili2" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili2_Unvan" Type="varchar" MaxLength="250" />
+          <Property Name="Ilgili2_Telefon1" Type="varchar" MaxLength="50" />
+          <Property Name="Ilgili2_Telefon2" Type="varchar" MaxLength="50" />
+          <Property Name="Adres" Type="varchar" MaxLength="500" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="500" />
+          <Property Name="DprtRef" Type="int" />
+          <Property Name="Ilgili1_Email" Type="varchar" MaxLength="100" />
+          <Property Name="Ilgili2_Email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Departmanlar">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departman" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HizmetHareketleri">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BaTarih" Type="datetime" />
+          <Property Name="BiTarih" Type="datetime" />
+          <Property Name="ProjeRef" Type="int" />
+          <Property Name="HizmetRef" Type="int" />
+          <Property Name="CariRef" Type="int" />
+          <Property Name="Ilgili" Type="varchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="ntext" />
+          <Property Name="DprtRef" Type="int" />
+          <Property Name="Ekleyen" Type="int" />
+          <Property Name="Ucret" Type="int" />
+          <Property Name="Kapama" Type="int" />
+          <Property Name="MailBil" Type="int" />
+          <Property Name="Zaman" Type="int" />
+          <Property Name="Hafta" Type="int" />
+        </EntityType>
+        <EntityType Name="Hizmetler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="50" />
+          <Property Name="DprtRef" Type="int" />
+        </EntityType>
+        <EntityType Name="IslemHareketleri">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IslemRef" Type="int" />
+          <Property Name="DprtRef" Type="int" />
+          <Property Name="KullaniciRef" Type="int" />
+          <Property Name="Durumu" Type="varchar" MaxLength="50" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="EkAciklama" Type="varchar(max)" />
+          <Property Name="Saat" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PTarih" Type="date" />
+          <Property Name="KullaniciRef" Type="int" />
+          <Property Name="CariRef" Type="int" />
+          <Property Name="Aciklama" Type="varchar(max)" />
+          <Property Name="Durumu" Type="varchar" MaxLength="50" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="EkAciklama" Type="varchar(max)" />
+          <Property Name="ProjeRef" Type="int" />
+          <Property Name="DprtRef" Type="int" />
+          <Property Name="Ozel" Type="int" />
+          <Property Name="GrvKlc" Type="int" />
+          <Property Name="Grv" Type="int" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isim" Type="varchar" MaxLength="100" />
+          <Property Name="DepartmanRef" Type="int" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" />
+          <Property Name="MailAdres" Type="varchar" MaxLength="100" />
+          <Property Name="MailUser" Type="varchar" MaxLength="50" />
+          <Property Name="MailPass" Type="varchar" MaxLength="50" />
+          <Property Name="MailHost" Type="varchar" MaxLength="50" />
+          <Property Name="MailPort" Type="int" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Projeler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="varchar" MaxLength="150" />
+          <Property Name="CariRef" Type="int" />
+          <Property Name="KullaniciRef" Type="int" />
+          <Property Name="BaTarih" Type="date" />
+          <Property Name="BiTarih" Type="date" />
+          <Property Name="Icerik" Type="ntext" />
+          <Property Name="DprtRef" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cariler_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Cariler">
+              <PropertyRef Name="DprtRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="HizmetHareketleri" Type="Self.HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="CariRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Hizmetler">
+          <End Role="Hizmetler" Type="Self.Hizmetler" Multiplicity="0..1" />
+          <End Role="HizmetHareketleri" Type="Self.HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hizmetler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="HizmetRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="HizmetHareketleri" Type="Self.HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="Ekleyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Projeler">
+          <End Role="Projeler" Type="Self.Projeler" Multiplicity="0..1" />
+          <End Role="HizmetHareketleri" Type="Self.HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projeler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="ProjeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hizmetler_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Hizmetler" Type="Self.Hizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Hizmetler">
+              <PropertyRef Name="DprtRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="CariRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanicilar_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Kullanicilar">
+              <PropertyRef Name="DepartmanRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EMSEYCRMDBModelStoreContainer">
+          <EntitySet Name="Cariler" EntityType="Self.Cariler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departmanlar" EntityType="Self.Departmanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HizmetHareketleri" EntityType="Self.HizmetHareketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hizmetler" EntityType="Self.Hizmetler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IslemHareketleri" EntityType="Self.IslemHareketleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projeler" EntityType="Self.Projeler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cariler_Departmanlar" Association="Self.FK_Cariler_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Cariler" EntitySet="Cariler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Cariler" Association="Self.FK_HizmetHareketleri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Hizmetler" Association="Self.FK_HizmetHareketleri_Hizmetler">
+            <End Role="Hizmetler" EntitySet="Hizmetler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Kullanicilar" Association="Self.FK_HizmetHareketleri_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Projeler" Association="Self.FK_HizmetHareketleri_Projeler">
+            <End Role="Projeler" EntitySet="Projeler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hizmetler_Departmanlar" Association="Self.FK_Hizmetler_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Hizmetler" EntitySet="Hizmetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Cariler" Association="Self.FK_Islemler_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanicilar_Departmanlar" Association="Self.FK_Kullanicilar_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EMSEYCRMDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cariler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="Unvan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sehir" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefon2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili1_Unvan" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili1_Telefon1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili1_Telefon2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili2_Unvan" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili2_Telefon1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili2_Telefon2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Adres" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DprtRef" Type="Int32" />
+          <Property Name="Ilgili1_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Ilgili2_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Departmanlar" Relationship="Self.FK_Cariler_Departmanlar" FromRole="Cariler" ToRole="Departmanlar" />
+          <NavigationProperty Name="Islemler" Relationship="Self.FK_Islemler_Cariler" FromRole="Cariler" ToRole="Islemler" />
+          <NavigationProperty Name="HizmetHareketleri" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler" FromRole="Cariler" ToRole="HizmetHareketleri" />
+        </EntityType>
+        <EntityType Name="Departmanlar">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departman" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cariler" Relationship="Self.FK_Cariler_Departmanlar" FromRole="Departmanlar" ToRole="Cariler" />
+          <NavigationProperty Name="Hizmetler" Relationship="Self.FK_Hizmetler_Departmanlar" FromRole="Departmanlar" ToRole="Hizmetler" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Kullanicilar_Departmanlar" FromRole="Departmanlar" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="HizmetHareketleri">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BaTarih" Type="DateTime" Precision="3" />
+          <Property Name="BiTarih" Type="DateTime" Precision="3" />
+          <Property Name="ProjeRef" Type="Int32" />
+          <Property Name="HizmetRef" Type="Int32" />
+          <Property Name="CariRef" Type="Int32" />
+          <Property Name="Ilgili" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DprtRef" Type="Int32" />
+          <Property Name="Ekleyen" Type="Int32" />
+          <Property Name="Ucret" Type="Int32" />
+          <Property Name="Kapama" Type="Int32" />
+          <Property Name="MailBil" Type="Int32" />
+          <NavigationProperty Name="Cariler" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler" FromRole="HizmetHareketleri" ToRole="Cariler" />
+          <NavigationProperty Name="Hizmetler" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler" FromRole="HizmetHareketleri" ToRole="Hizmetler" />
+          <NavigationProperty Name="Kullanicilar" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar" FromRole="HizmetHareketleri" ToRole="Kullanicilar" />
+          <NavigationProperty Name="Projeler" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler" FromRole="HizmetHareketleri" ToRole="Projeler" />
+          <Property Name="Zaman" Type="Int32" />
+          <Property Name="Hafta" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Hizmetler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DprtRef" Type="Int32" />
+          <NavigationProperty Name="Departmanlar" Relationship="Self.FK_Hizmetler_Departmanlar" FromRole="Hizmetler" ToRole="Departmanlar" />
+          <NavigationProperty Name="HizmetHareketleri" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler" FromRole="Hizmetler" ToRole="HizmetHareketleri" />
+        </EntityType>
+        <EntityType Name="IslemHareketleri">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IslemRef" Type="Int32" />
+          <Property Name="DprtRef" Type="Int32" />
+          <Property Name="KullaniciRef" Type="Int32" />
+          <Property Name="Durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="EkAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Saat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Islemler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PTarih" Type="DateTime" Precision="0" />
+          <Property Name="KullaniciRef" Type="Int32" />
+          <Property Name="CariRef" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Durumu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <Property Name="EkAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProjeRef" Type="Int32" />
+          <Property Name="DprtRef" Type="Int32" />
+          <Property Name="Ozel" Type="Int32" />
+          <Property Name="GrvKlc" Type="Int32" />
+          <Property Name="Grv" Type="Int32" />
+          <NavigationProperty Name="Cariler" Relationship="Self.FK_Islemler_Cariler" FromRole="Islemler" ToRole="Cariler" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isim" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmanRef" Type="Int32" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailAdres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MailUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailHost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MailPort" Type="Int32" />
+          <NavigationProperty Name="Departmanlar" Relationship="Self.FK_Kullanicilar_Departmanlar" FromRole="Kullanicilar" ToRole="Departmanlar" />
+          <NavigationProperty Name="HizmetHareketleri" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar" FromRole="Kullanicilar" ToRole="HizmetHareketleri" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Projeler">
+          <Key>
+            <PropertyRef Name="Referans" />
+          </Key>
+          <Property Name="Referans" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CariRef" Type="Int32" />
+          <Property Name="KullaniciRef" Type="Int32" />
+          <Property Name="BaTarih" Type="DateTime" Precision="0" />
+          <Property Name="BiTarih" Type="DateTime" Precision="0" />
+          <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DprtRef" Type="Int32" />
+          <NavigationProperty Name="HizmetHareketleri" Relationship="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler" FromRole="Projeler" ToRole="HizmetHareketleri" />
+        </EntityType>
+        <Association Name="FK_Cariler_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Cariler">
+              <PropertyRef Name="DprtRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Islemler_Cariler">
+          <End Role="Cariler" Type="Self.Cariler" Multiplicity="0..1" />
+          <End Role="Islemler" Type="Self.Islemler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Islemler">
+              <PropertyRef Name="CariRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hizmetler_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Hizmetler" Type="Self.Hizmetler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Hizmetler">
+              <PropertyRef Name="DprtRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kullanicilar_Departmanlar">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="Kullanicilar">
+              <PropertyRef Name="DepartmanRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EMSEYCRMDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cariler" EntityType="Self.Cariler" />
+          <EntitySet Name="Departmanlar" EntityType="Self.Departmanlar" />
+          <EntitySet Name="HizmetHareketleri" EntityType="Self.HizmetHareketleri" />
+          <EntitySet Name="Hizmetler" EntityType="Self.Hizmetler" />
+          <EntitySet Name="IslemHareketleri" EntityType="Self.IslemHareketleri" />
+          <EntitySet Name="Islemler" EntityType="Self.Islemler" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Projeler" EntityType="Self.Projeler" />
+          <AssociationSet Name="FK_Cariler_Departmanlar" Association="Self.FK_Cariler_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Cariler" EntitySet="Cariler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Islemler_Cariler" Association="Self.FK_Islemler_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="Islemler" EntitySet="Islemler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hizmetler_Departmanlar" Association="Self.FK_Hizmetler_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Hizmetler" EntitySet="Hizmetler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kullanicilar_Departmanlar" Association="Self.FK_Kullanicilar_Departmanlar">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Cariler" Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler">
+            <End Role="Cariler" EntitySet="Cariler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Hizmetler" Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler">
+            <End Role="Hizmetler" EntitySet="Hizmetler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Kullanicilar" Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HizmetHareketleri_Projeler" Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler">
+            <End Role="Projeler" EntitySet="Projeler" />
+            <End Role="HizmetHareketleri" EntitySet="HizmetHareketleri" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_HizmetHareketleri_Cariler">
+          <End Type="EMSEYCRMDBModel.Cariler" Role="Cariler" Multiplicity="0..1" />
+          <End Type="EMSEYCRMDBModel.HizmetHareketleri" Role="HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cariler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="CariRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Hizmetler">
+          <End Type="EMSEYCRMDBModel.Hizmetler" Role="Hizmetler" Multiplicity="0..1" />
+          <End Type="EMSEYCRMDBModel.HizmetHareketleri" Role="HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hizmetler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="HizmetRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Kullanicilar">
+          <End Type="EMSEYCRMDBModel.Kullanicilar" Role="Kullanicilar" Multiplicity="0..1" />
+          <End Type="EMSEYCRMDBModel.HizmetHareketleri" Role="HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="Ekleyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HizmetHareketleri_Projeler">
+          <End Type="EMSEYCRMDBModel.Projeler" Role="Projeler" Multiplicity="0..1" />
+          <End Type="EMSEYCRMDBModel.HizmetHareketleri" Role="HizmetHareketleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projeler">
+              <PropertyRef Name="Referans" />
+            </Principal>
+            <Dependent Role="HizmetHareketleri">
+              <PropertyRef Name="ProjeRef" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EMSEYCRMDBModelStoreContainer" CdmEntityContainer="EMSEYCRMDBEntities">
+          <EntitySetMapping Name="Cariler">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Cariler">
+              <MappingFragment StoreEntitySet="Cariler">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+                <ScalarProperty Name="Sehir" ColumnName="Sehir" />
+                <ScalarProperty Name="Telefon1" ColumnName="Telefon1" />
+                <ScalarProperty Name="Telefon2" ColumnName="Telefon2" />
+                <ScalarProperty Name="Ilgili1" ColumnName="Ilgili1" />
+                <ScalarProperty Name="Ilgili1_Unvan" ColumnName="Ilgili1_Unvan" />
+                <ScalarProperty Name="Ilgili1_Telefon1" ColumnName="Ilgili1_Telefon1" />
+                <ScalarProperty Name="Ilgili1_Telefon2" ColumnName="Ilgili1_Telefon2" />
+                <ScalarProperty Name="Ilgili2" ColumnName="Ilgili2" />
+                <ScalarProperty Name="Ilgili2_Unvan" ColumnName="Ilgili2_Unvan" />
+                <ScalarProperty Name="Ilgili2_Telefon1" ColumnName="Ilgili2_Telefon1" />
+                <ScalarProperty Name="Ilgili2_Telefon2" ColumnName="Ilgili2_Telefon2" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+                <ScalarProperty Name="Ilgili1_Email" ColumnName="Ilgili1_Email" />
+                <ScalarProperty Name="Ilgili2_Email" ColumnName="Ilgili2_Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departmanlar">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Departmanlar">
+              <MappingFragment StoreEntitySet="Departmanlar">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="Departman" ColumnName="Departman" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HizmetHareketleri">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.HizmetHareketleri">
+              <MappingFragment StoreEntitySet="HizmetHareketleri">
+                <ScalarProperty Name="Hafta" ColumnName="Hafta" />
+                <ScalarProperty Name="Zaman" ColumnName="Zaman" />
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="BaTarih" ColumnName="BaTarih" />
+                <ScalarProperty Name="BiTarih" ColumnName="BiTarih" />
+                <ScalarProperty Name="ProjeRef" ColumnName="ProjeRef" />
+                <ScalarProperty Name="HizmetRef" ColumnName="HizmetRef" />
+                <ScalarProperty Name="CariRef" ColumnName="CariRef" />
+                <ScalarProperty Name="Ilgili" ColumnName="Ilgili" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+                <ScalarProperty Name="Ekleyen" ColumnName="Ekleyen" />
+                <ScalarProperty Name="Ucret" ColumnName="Ucret" />
+                <ScalarProperty Name="Kapama" ColumnName="Kapama" />
+                <ScalarProperty Name="MailBil" ColumnName="MailBil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hizmetler">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Hizmetler">
+              <MappingFragment StoreEntitySet="Hizmetler">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IslemHareketleri">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.IslemHareketleri">
+              <MappingFragment StoreEntitySet="IslemHareketleri">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="IslemRef" ColumnName="IslemRef" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+                <ScalarProperty Name="KullaniciRef" ColumnName="KullaniciRef" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="EkAciklama" ColumnName="EkAciklama" />
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Islemler">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Islemler">
+              <MappingFragment StoreEntitySet="Islemler">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="PTarih" ColumnName="PTarih" />
+                <ScalarProperty Name="KullaniciRef" ColumnName="KullaniciRef" />
+                <ScalarProperty Name="CariRef" ColumnName="CariRef" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="EkAciklama" ColumnName="EkAciklama" />
+                <ScalarProperty Name="ProjeRef" ColumnName="ProjeRef" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+                <ScalarProperty Name="Ozel" ColumnName="Ozel" />
+                <ScalarProperty Name="GrvKlc" ColumnName="GrvKlc" />
+                <ScalarProperty Name="Grv" ColumnName="Grv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="Isim" ColumnName="Isim" />
+                <ScalarProperty Name="DepartmanRef" ColumnName="DepartmanRef" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="MailAdres" ColumnName="MailAdres" />
+                <ScalarProperty Name="MailUser" ColumnName="MailUser" />
+                <ScalarProperty Name="MailPass" ColumnName="MailPass" />
+                <ScalarProperty Name="MailHost" ColumnName="MailHost" />
+                <ScalarProperty Name="MailPort" ColumnName="MailPort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projeler">
+            <EntityTypeMapping TypeName="EMSEYCRMDBModel.Projeler">
+              <MappingFragment StoreEntitySet="Projeler">
+                <ScalarProperty Name="Referans" ColumnName="Referans" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="CariRef" ColumnName="CariRef" />
+                <ScalarProperty Name="KullaniciRef" ColumnName="KullaniciRef" />
+                <ScalarProperty Name="BaTarih" ColumnName="BaTarih" />
+                <ScalarProperty Name="BiTarih" ColumnName="BiTarih" />
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="DprtRef" ColumnName="DprtRef" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

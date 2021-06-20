@@ -1,0 +1,64 @@
+﻿@model WorkControlPortal.Models.Projeler
+@{
+    ViewBag.Title = "ProjeGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script >
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+            });
+        });
+    </script>*@
+
+@using (Html.BeginForm("ProjeGuncelle", "Proje", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-6">
+                @*@Html.h(m => m.Referans)*@
+                @Html.HiddenFor(m => m.Referans, new { @class = "form-control", @readonly = "readonly" })
+
+
+                @Html.LabelFor(m => m.Kod)
+                @Html.TextBoxFor(m => m.Kod, new { @class = "form-control", @required = "required" })
+
+                <label class="form-label">Proje Tanımı</label>
+                @Html.TextBoxFor(m => m.Aciklama, new { @class = "form-control", @required = "required" })
+
+                <label class="form-label">Departman Seçiniz</label>
+                @*@Html.TextBoxFor(m => m.DprtRef, new { @class = "form-control" })*@
+                @Html.DropDownListFor(m => m.DprtRef, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+                <label class="form-label">Proje Açıklaması</label>
+                @Html.TextBoxFor(m => m.Icerik, new { @class = "form-control", @required = "required" })
+
+                @Html.LabelFor(m => m.BaTarih)
+                @Html.TextBoxFor(m => m.BaTarih, new { @type = "date", @Value = Model.BaTarih.Value.ToString("yyyy-MM-dd"), @class = "form-control", @required = "required" })
+
+
+                <label class="form-label">Bitiş Tarih</label>
+                @Html.TextBoxFor(m => m.BiTarih, new { @type = "date", @Value = Model.BiTarih.Value.ToString("yyyy-MM-dd"), @class = "form-control", @required = "required" })
+
+                <div class="col-md-6" style="margin-top:20px">
+                    <button type="submit" class="btn btn-warning" id="btn1">Proje Güncelle</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+}
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Güncellendi.", "warning");
+    });
+</script>
+
+

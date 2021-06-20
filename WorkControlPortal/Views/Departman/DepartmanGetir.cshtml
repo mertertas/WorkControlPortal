@@ -1,0 +1,32 @@
+﻿@model WorkControlPortal.Models.Departmanlar
+@{
+    ViewBag.Title = "DepartmanGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    @using (Html.BeginForm("DepartmanGuncelle", "Departman", FormMethod.Post))
+    {
+        <div class="col-md-4" style="margin-top:15px">
+            @Html.LabelFor(m => m.Referans)
+            @Html.TextBoxFor(m => m.Referans, new { @class = "form-control", @readonly = "readonly" })
+
+            @Html.LabelFor(m => m.Departman)
+            @Html.TextBoxFor(m => m.Departman, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4" style="margin-top:15px">
+            <button type="submit" class="btn btn-warning" id="btn1">Departman Güncelle</button>
+        </div>
+    }
+
+</div>
+@*disabled = "disabled", @readonly = "readonly"*@
+
+@*submit controllere veri gönderir*@
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Güncellendi.", "warning");
+    });
+</script>

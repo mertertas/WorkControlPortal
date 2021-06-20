@@ -1,0 +1,61 @@
+﻿@model WorkControlPortal.Models.HizmetHareketleri
+@{
+    ViewBag.Title = "IslemGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("IslemGuncelle", "Islem", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-4">
+                @Html.HiddenFor(p => p.Referans)
+                <label class="form-label">Başlangıç Tarihi</label>
+                @Html.TextBoxFor(p => p.BaTarih, new { @type = "datetime-local", @Value = Model.BaTarih.Value.ToString("yyyy-MM-ddTHH:mm:ss.fff"), @class = "form-control", @required = "required" })
+                <label class="form-label">Bitiş Tarih</label>
+                @Html.TextBoxFor(p => p.BiTarih, new { @type = "datetime-local", @Value = Model.BiTarih.Value.ToString("yyyy-MM-ddTHH:mm:ss.fff"), @class = "form-control", @required = "required" })
+
+
+                <label class="form-label">Cari Seçiniz</label>
+                @Html.DropDownListFor(m => m.Cariler.Referans, (List<SelectListItem>)ViewBag.cariValue, new { @class = "form-control", id = "dropDown1", @required = "required" })
+
+
+                <label class="form-label">Hizmet Seçiniz</label>
+                @Html.DropDownListFor(m => m.Hizmetler.Referans, (List<SelectListItem>)ViewBag.hizmetValue, new { @class = "form-control", id = "dropDown2", @required = "required" })
+
+                <label class="form-label">Proje Seçiniz</label>
+                @Html.DropDownListFor(m => m.Projeler.Referans, (List<SelectListItem>)ViewBag.projeValue, new { @class = "form-control", id = "dropDown3" })
+
+
+                <label class="form-label">İlgili</label>
+                @Html.TextBoxFor(p => p.Ilgili, new { @type = "text", @Value = Model.Ilgili, @class = "form-control", @required = "required" })
+
+                <label class="form-label">Açıklama</label>
+                @Html.TextAreaFor(p => p.Aciklama, new { @type = "text", @Value = Model.Aciklama, @class = "form-control", @required = "required" })
+
+                <div style="margin-top:20px">
+                    <button class="btn btn-primary" type="submit" id="btn1">İşlem Güncelle</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Content/chosen.jquery.min.js"></script>
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
+<script>
+
+    $("#dropDown1").chosen();
+    $("#dropDown2").chosen();
+    $("#dropDown3").chosen();
+</script>
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Güncellendi.", "warning");
+    });
+</script>

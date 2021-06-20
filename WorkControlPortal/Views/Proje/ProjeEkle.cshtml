@@ -1,0 +1,73 @@
+﻿@model WorkControlPortal.Models.Projeler
+
+@{
+    ViewBag.Title = "ProjeEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <form class="form-group" method="post" style="margin-top:15px" autocomplete="off">
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <label class="form-label">Kod</label>
+                <input type="text" class="form-control" name="Kod" required>
+
+                <label class="form-label">Proje Tanımı</label>
+                <input type="text" class="form-control" name="Aciklama" required>
+
+                <label class="form-label">Departman Seçiniz</label>
+                @Html.DropDownListFor(m => m.DprtRef, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+                <label class="form-label">Proje Açıklaması</label>
+                <input type="text" class="form-control" name="Icerik" required>
+
+                <label class="form-label">Başlangıç Tarih</label>
+                <input type="date" class="form-control" name="BaTarih" id="theDate" required>
+
+                <label class="form-label">Bitiş Tarih</label>
+                <input type="date" class="form-control" name="BiTarih" id="theDate2" required>
+
+                <div class="col-md-4" style="margin-top:20px">
+                    <button class="btn btn-primary" type="submit" id="btn1">Proje Ekle</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+@*----Tarih Ayarlama----*@
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("theDate").value = today;
+</script>
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("theDate2").value = today;
+</script>
+
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Eklendi.", "success");
+    });
+</script>

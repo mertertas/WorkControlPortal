@@ -1,0 +1,72 @@
+﻿@model WorkControlPortal.Models.HizmetHareketleri
+@{
+    ViewBag.Title = "IslemEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form class="form-group" method="post" style="margin-top:15px" autocomplete="off">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 ">
+
+                <label class="form-label">Başlangıç Tarihi</label>
+                <input type="datetime-local" class="form-control" name="BaTarih" id="theDate" required>
+
+                <label class="form-label">Bitiş Tarih</label>
+                <input type="datetime-local" class="form-control" name="BiTarih" id="theDate2" required>
+
+
+                <label class="form-label">Cari Seçiniz</label>
+                @Html.DropDownListFor(m => m.Cariler.Referans, (List<SelectListItem>)ViewBag.cariValue, new { @class = "form-control", id = "dropDown1" })
+
+
+                <label class="form-label">Hizmet Seçiniz</label>
+                @Html.DropDownListFor(m => m.Hizmetler.Referans, (List<SelectListItem>)ViewBag.hizmetValue, new { @class = "form-control", id = "dropDown2" })
+
+                <label class="form-label">Proje Seçiniz</label>
+                @Html.DropDownListFor(m => m.Projeler.Referans, (List<SelectListItem>)ViewBag.projeValue, new { @class = "form-control", id = "dropDown3" })
+
+
+                <label class="form-label">İlgili</label>
+                <input type="text" class="form-control" name="Ilgili" required>
+
+                <label class="form-label">Açıklama</label>
+                <textarea class="form-control" name="Aciklama" required></textarea>
+
+                <div style="margin-top:20px">
+                    <button class="btn btn-primary" type="submit" id="btn1">İşlem Ekle</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>
+@*---------Searchable Dropdownlist--------------*@
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Content/chosen.jquery.min.js"></script>
+<link href="~/Content/chosen.min.css" rel="stylesheet" />
+<script>
+
+    $("#dropDown1").chosen();
+    $("#dropDown2").chosen();
+    $("#dropDown3").chosen();
+</script>
+@*---------Datetime Local Ayarlama--------------*@
+<script type="text/javascript">
+    var d = new Date();
+    var elem = document.getElementById("theDate");
+    elem.value = d.toISOString().slice(0, 16);
+</script>
+<script type="text/javascript">
+    var d = new Date();
+    var elem = document.getElementById("theDate2");
+    elem.value = d.toISOString().slice(0, 16);
+</script>
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Eklendi.", "success");
+    });
+</script>

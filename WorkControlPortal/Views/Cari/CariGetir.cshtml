@@ -1,0 +1,54 @@
+﻿@model WorkControlPortal.Models.Cariler
+
+@{
+    ViewBag.Title = "CariGetir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("CariGuncelle", "Cari", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Referans)
+                @Html.TextBoxFor(m => m.Referans, new { @class = "form-control", @readonly = "readonly" })
+
+
+                @Html.LabelFor(m => m.Kod)
+                @Html.TextBoxFor(m => m.Kod, new { @class = "form-control" })
+
+                @Html.LabelFor(m => m.Unvan)
+                @Html.TextBoxFor(m => m.Unvan, new { @class = "form-control" })
+
+                <label>Departman Seçiniz</label>
+                @*@Html.TextBoxFor(m => m.DprtRef, new { @class = "form-control" })*@
+                @Html.DropDownListFor(m => m.Departmanlar.Referans, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+
+                <label>İlgili</label>
+                @Html.TextBoxFor(m => m.Ilgili1, new { @class = "form-control" })
+
+                <label>Telefon</label>
+                @Html.TextBoxFor(m => m.Ilgili1_Telefon1, new { @class = "form-control" })
+
+                <label>E-Mail</label>
+                @Html.TextBoxFor(m => m.Ilgili1_Email, new { @class = "form-control" })
+
+                <div class="col-md-5" style="margin-top:20px">
+                    <button type="submit" class="btn btn-warning" id="btn1">Cari Güncelle</button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+}
+
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Güncellendi.", "warning");
+    });
+</script>

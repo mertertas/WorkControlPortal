@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3e546b3782e4f9db2c678f407362cb9" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Cariler" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Departmanlar" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.HizmetHareketleri" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Hizmetler" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.IslemHareketleri" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Islemler" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Kullanicilar" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Projeler" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_Cariler_Departmanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_Islemler_Cariler" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_Hizmetler_Departmanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_Kullanicilar_Departmanlar" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

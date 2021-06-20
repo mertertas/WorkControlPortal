@@ -1,0 +1,158 @@
+﻿@using WorkControlPortal.Models;
+@*@model Islemler*@
+@*@using PagedList;
+    @using PagedList.Mvc;
+    @model PagedList.IPagedList<Islemler>*@
+
+@model List<HizmetHareketleri>
+@*@model WorkControlPortal.Models.Islemler*@
+@{
+    ViewBag.Title = "Islem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div style="margin-top:10px">
+        <a href="/Islem/IslemEkle" class="btn btn-info">İşlem Ekle</a>
+
+    </div>
+
+    @using (Html.BeginForm("Islem", "Islem", FormMethod.Get))
+    {
+        <div class="container-fluid" style="margin-top:10px">
+            <div class="row justify-content-start">
+                <div class="col-3">
+                    <input type="date" class="form-control" name="Tarih" id="theDate">
+
+                </div>
+
+                <div class="col-3">
+                    <input type="submit" value="Listele" class="btn-sm btn-primary" />
+                </div>
+
+            </div>
+
+
+        </div>
+    }
+    <div class="row" style="margin-top:10px">
+        <div class="col-md-10">
+            <table id="tbl1" style="margin-top: 10px" class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tarih</th>
+                        <th>Kullanıcı</th>
+                        <th>Cari Ünvan</th>
+                        <th>İlgili </th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var hareket in Model)
+                    {
+                        <tr>
+                            <td>
+                                @hareket.Referans
+                            </td>
+                            <td>
+                                @hareket.BaTarih.Value.Date.ToShortDateString()
+                            </td>
+                            <td>
+                                @hareket.Kullanicilar.Isim
+                            </td>
+                            <td>
+                                @hareket.Cariler.Unvan
+                            </td>
+                            <td>
+                                @hareket.Ilgili
+                            </td>
+                            <td>
+                                @*@if (hareket.Aciklama != null || hareket.Aciklama.Length > 40)
+                                    {
+                                        hareket.Aciklama.Substring(0, 40);
+
+                                    }
+                                    @if (hareket.Aciklama == null || hareket.Aciklama.Length < 40)
+                                    {
+                                        hareket.Aciklama.ToString();
+                                    }*@
+
+                                @hareket.Aciklama
+                            </td>
+                            <td>
+                                @Html.ActionLink("Sil", "IslemSil", "Islem", new { IslemId = hareket.Referans }, new { @class = "btn-sm btn-danger" ,@id="btn1" })
+                                @Html.ActionLink("Güncelle", "IslemGetir", "Islem", new { IslemId = hareket.Referans }, new { @class = "btn-sm btn-info" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            @*@Html.PagedListPager((IPagedList)Model, sayfaId => Url.Action("Islem", new { sayfaId }))*@
+        </div>
+    </div>
+</div>
+
+
+@*-------Datatable özellikleri------*@
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap4.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+<script>
+    $('#tbl1').DataTable({
+        /*dom: 'Bfrtip',*/
+        lengthChange: false,
+        //buttons: [
+        //    /*'excel','print'*/
+        //],
+        searching: false
+        //responsive: true
+    });
+</script>
+@*----Tarih Ayarlama----*@
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("theDate").value = today;
+</script>
+
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Good job!", "You clicked the button!", "success");
+    });
+</script>

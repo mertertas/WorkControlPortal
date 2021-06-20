@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <form class="form-group" method="post" style="margin-top:15px" autocomplete="off">
+
+        <div class="col-md-3">
+            <label>Departman Adı</label>
+            <input type="text" class="form-control" name="Departman" />
+        </div>
+        <div class="col-md-3" style="margin-top:15px">
+            <button class="btn btn-info" id="btn1">Departman Ekle</button>
+        </div>
+    </form>
+</div>
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Eklendi.", "success");
+    });
+</script>
