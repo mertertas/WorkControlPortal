@@ -12,10 +12,11 @@ using System.Web.UI;
 
 namespace WorkControlPortal.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class IslemController : Controller
     {
         // GET: Islem
-        [Authorize(Roles = "admin")]
+       
         public ActionResult Islem(DateTime? Tarih)
         {
             //using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())
@@ -38,7 +39,7 @@ namespace WorkControlPortal.Controllers
 
         }
 
-        [Authorize(Roles = "admin")]
+       
         [HttpGet]
         public ActionResult IslemEkle()
         {
@@ -133,6 +134,9 @@ namespace WorkControlPortal.Controllers
                 h1.Ilgili = hizmetHareketleri.Ilgili;
                 h1.Ekleyen = deger;/// KONTROL
                 h1.DprtRef = cari.Departmanlar.Referans;
+                h1.Ucret = hizmetHareketleri.Ucret;
+                h1.MailBil = hizmetHareketleri.MailBil;
+                h1.Kapama = hizmetHareketleri.Kapama;
                 if (hizmet != null) h1.HizmetRef = hizmet.Referans;
                 if (proje != null) h1.ProjeRef = proje.Referans;
                 if (cari != null) h1.CariRef = cari.Referans;
@@ -249,29 +253,42 @@ namespace WorkControlPortal.Controllers
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())
             {
-                var query = context.HizmetHareketleri.Find(hizmetHareketleri.Referans);
-                int deger = (int)Session["Referans"];
-
-                if (query!=null)
+                try
                 {
-                    query.BaTarih = hizmetHareketleri.BaTarih;
-                    query.BiTarih = hizmetHareketleri.BiTarih;
-                    query.Aciklama = hizmetHareketleri.Aciklama;
-                    query.Ilgili = hizmetHareketleri.Ilgili;
-                    query.Ekleyen = deger;/// KONTROL
+                    var query = context.HizmetHareketleri.Find(hizmetHareketleri.Referans);
+                    int deger = (int)Session["Referans"];
 
-                    var hizmet = context.Hizmetler.Where(p => p.Referans == hizmetHareketleri.Hizmetler.Referans).SingleOrDefault();
-                    var proje = context.Projeler.Where(p => p.Referans == hizmetHareketleri.Projeler.Referans).SingleOrDefault();
-                    var cari = context.Cariler.Where(p => p.Referans == hizmetHareketleri.Cariler.Referans).SingleOrDefault();
+                    if (query != null)
+                    {
+                        query.BaTarih = hizmetHareketleri.BaTarih;
+                        query.BiTarih = hizmetHareketleri.BiTarih;
+                        query.Aciklama = hizmetHareketleri.Aciklama;
+                        query.Ilgili = hizmetHareketleri.Ilgili;
+                        query.Ekleyen = deger;/// KONTROL
+                        query.Ucret = hizmetHareketleri.Ucret;
+                        query.Kapama = hizmetHareketleri.Kapama;
+                        query.MailBil = hizmetHareketleri.MailBil;
 
-                    if (hizmet != null) query.HizmetRef = hizmet.Referans;
-                    if (proje != null) query.ProjeRef = proje.Referans;
-                    if (cari != null) query.CariRef = cari.Referans;
-                    context.SaveChanges();
 
-                   
+                        var hizmet = context.Hizmetler.Where(p => p.Referans == hizmetHareketleri.Hizmetler.Referans).SingleOrDefault();
+                        var proje = context.Projeler.Where(p => p.Referans == hizmetHareketleri.Projeler.Referans).SingleOrDefault();
+                        var cari = context.Cariler.Where(p => p.Referans == hizmetHareketleri.Cariler.Referans).SingleOrDefault();
+
+                        if (hizmet != null) query.HizmetRef = hizmet.Referans;
+                        if (proje != null) query.ProjeRef = proje.Referans;
+                        if (cari != null) query.CariRef = cari.Referans;
+                        context.SaveChanges();
+
+
+                    }
+                    return RedirectToAction("Islem");
                 }
-                return RedirectToAction("Islem");
+                catch (Exception)
+                {
+
+                    return RedirectToAction("Login");
+                }
+                
             }
         }
     }

@@ -16,7 +16,6 @@ namespace WorkControlPortal.Models
     {
         public Cariler()
         {
-            this.Islemler = new HashSet<Islemler>();
             this.HizmetHareketleri = new HashSet<HizmetHareketleri>();
         }
     
@@ -41,7 +40,6 @@ namespace WorkControlPortal.Models
         public string Ilgili2_Email { get; set; }
     
         public virtual Departmanlar Departmanlar { get; set; }
-        public virtual ICollection<Islemler> Islemler { get; set; }
         public virtual ICollection<HizmetHareketleri> HizmetHareketleri { get; set; }
     }
 }

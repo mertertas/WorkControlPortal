@@ -1,0 +1,47 @@
+﻿@model WorkControlPortal.Models.Kullanicilar
+@{
+    ViewBag.Title = "UserEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form-group" method="post" style="margin-top:15px" autocomplete="off">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 ">
+                <label class="form-label">İsim-Soyisim</label>
+                <input type="text" class="form-control" name="Isim" required>
+
+
+                <label class="form-label">Mail</label>
+                <input type="email" class="form-control" name="MailAdres" required>
+
+
+                <label class="form-label">Departman Seçiniz</label>
+                @Html.DropDownListFor(m => m.Departmanlar.Referans, (List<SelectListItem>)ViewBag.departman, new { @class = "form-control" })
+                <label class="form-label">Rol Seçiniz</label>
+                @Html.DropDownListFor(m => m.Role, (List<SelectListItem>)ViewBag.roles, new { @class = "form-control" })
+
+                <label class="form-label">Telefon</label>
+                <input type="tel" class="form-control" name="Tel" required>
+
+                <label class="form-label">Şifre</label>
+                <input type="password" class="form-control" name="Sifre" required>
+
+                <div style="margin-top:20px">
+                    <button class="btn btn-primary" type="submit" id="btn1">Kullanıcı Ekle</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</form>
+@*----------------------Sweet Alert----------------*@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btn1').click(function () {
+        swal("Başarılı!", "Kayıt Eklendi.", "success");
+    });
+</script>
+

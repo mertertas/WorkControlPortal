@@ -30,7 +30,7 @@ namespace WorkControlPortal.Models
         public DbSet<HizmetHareketleri> HizmetHareketleri { get; set; }
         public DbSet<Hizmetler> Hizmetler { get; set; }
         public DbSet<IslemHareketleri> IslemHareketleri { get; set; }
-        public DbSet<Islemler> Islemler { get; set; }
+        public DbSet<Kapamalar> Kapamalar { get; set; }
         public DbSet<Kullanicilar> Kullanicilar { get; set; }
         public DbSet<Projeler> Projeler { get; set; }
     }

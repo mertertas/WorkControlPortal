@@ -8,6 +8,7 @@ using System.Web.Security;
 
 namespace WorkControlPortal.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -26,18 +27,19 @@ namespace WorkControlPortal.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(query.MailAdres, false);
                     Session["Referans"] = query.Referans;
-                    return RedirectToAction("Index","Home");
+                    Session["MailAdres"] = query.MailAdres;
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     return RedirectToAction("Login");
                 }
             }
-         
+
         }
         public ActionResult LogOut()
         {
-
+            FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
     }

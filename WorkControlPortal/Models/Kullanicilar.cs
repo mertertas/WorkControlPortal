@@ -29,6 +29,7 @@ namespace WorkControlPortal.Models
         public string MailHost { get; set; }
         public Nullable<int> MailPort { get; set; }
         public string Role { get; set; }
+        public string Tel { get; set; }
     
         public virtual Departmanlar Departmanlar { get; set; }
         public virtual ICollection<HizmetHareketleri> HizmetHareketleri { get; set; }

@@ -6,11 +6,14 @@ using System.Web.Mvc;
 
 namespace WorkControlPortal.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
-        [Authorize(Roles = "admin")]
+        
         public ActionResult Index()
         {
+            string MailAdres = (string)Session["MailAdres"];
+            ViewBag.dgr = MailAdres;
             return View();
         }
 

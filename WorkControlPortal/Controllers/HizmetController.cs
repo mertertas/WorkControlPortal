@@ -10,7 +10,7 @@ namespace WorkControlPortal.Controllers
     public class HizmetController : Controller
     {
         // GET: Hizmet
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Hizmet()
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())

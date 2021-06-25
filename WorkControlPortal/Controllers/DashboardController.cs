@@ -13,17 +13,17 @@ namespace WorkControlPortal.Controllers
     public class DashboardController : Controller
     {
         // GET: Dashboard
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Dashboard()
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())
             {
 
-                var deger5 = context.HizmetHareketleri.Where(p => p.BaTarih.Value.Year == DateTime.Now.Year && p.BaTarih.Value.Month == DateTime.Now.Month && p.BaTarih.Value.Day == DateTime.Now.Day && p.Ucret == 0).Select(p => p.Zaman).Sum();
+                var deger5 = context.HizmetHareketleri.Where(p => p.BaTarih.Value.Year == DateTime.Now.Year && p.BaTarih.Value.Month == DateTime.Now.Month && p.BaTarih.Value.Day == DateTime.Now.Day && p.Ucret == false).Select(p => p.Zaman).Sum();
                 ViewBag.d5 = deger5 == null ? 0 : deger5;
 
 
-                var deger6 = context.HizmetHareketleri.Where(p => p.BaTarih.Value.Year == DateTime.Now.Year && p.BaTarih.Value.Month == DateTime.Now.Month && p.BaTarih.Value.Day == DateTime.Now.Day && p.Ucret == 1).Select(p => p.Zaman).Sum();
+                var deger6 = context.HizmetHareketleri.Where(p => p.BaTarih.Value.Year == DateTime.Now.Year && p.BaTarih.Value.Month == DateTime.Now.Month && p.BaTarih.Value.Day == DateTime.Now.Day && p.Ucret == true).Select(p => p.Zaman).Sum();
                 ViewBag.d6 = deger6 == null ? 0 : deger6;
 
                 int user = (int)Session["Referans"];

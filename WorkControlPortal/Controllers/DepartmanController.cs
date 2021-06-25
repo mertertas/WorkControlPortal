@@ -14,7 +14,7 @@ namespace WorkControlPortal.Controllers
         // GET: Departman
 
 
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Departman()
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())

@@ -33,13 +33,24 @@
                 <label class="form-label">Açıklama</label>
                 @Html.TextAreaFor(p => p.Aciklama, new { @type = "text", @Value = Model.Aciklama, @class = "form-control", @required = "required" })
 
+                @*@Html.CheckBox("Ucret",Model.)*@
+                <label class="form-label">
+                    <input type="checkbox" name="Ucret" checked="@Model.Ucret" value="true"/> Ücretsiz
+                    <input type="hidden" checked="@Model.Ucret" name="Ucret" value="false" />
+                </label>
+                <label class="form-label">
+                    <input type="checkbox" name="Kapama" checked="@Model.Kapama" value="true" /> Kapama
+                    <input type="hidden" checked="@Model.Kapama" name="Kapama" value="false" />
+                </label>
+                <label class="form-label">
+                    <input type="checkbox" name="MailBil" checked="@Model.MailBil" value="true" /> Mail
+                    <input type="hidden" checked="@Model.MailBil" name="MailBil" value="false" />
+                </label>
+
                 <div style="margin-top:20px">
                     <button class="btn btn-primary" type="submit" id="btn1">İşlem Güncelle</button>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 }

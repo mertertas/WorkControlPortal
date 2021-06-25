@@ -24,9 +24,9 @@ namespace WorkControlPortal.Models
         public string Aciklama { get; set; }
         public Nullable<int> DprtRef { get; set; }
         public Nullable<int> Ekleyen { get; set; }
-        public Nullable<int> Ucret { get; set; }
-        public Nullable<int> Kapama { get; set; }
-        public Nullable<int> MailBil { get; set; }
+        public Nullable<bool> Ucret { get; set; }
+        public Nullable<bool> Kapama { get; set; }
+        public Nullable<bool> MailBil { get; set; }
         public Nullable<int> Zaman { get; set; }
         public Nullable<int> Hafta { get; set; }
     

@@ -31,6 +31,20 @@
 
                 <label class="form-label">Açıklama</label>
                 <textarea class="form-control" name="Aciklama" required></textarea>
+                <label class="form-label">
+                    <input  type="checkbox" name="Ucret" value="true" /> Ücretsiz
+                    <input  type="hidden" checked="checked" name="Ucret" value="false" />
+                </label>
+                <label class="form-label">
+                    <input type="checkbox" name="Kapama" /> Kapama
+                    <input type="hidden" checked="checked" name="Kapama" value="false" />
+                </label>
+                <label class="form-label">
+                    <input type="checkbox" name="MailBil" /> Mail
+                    <input type="hidden" checked="checked" name="MailBil" value="false" />
+                </label>
+
+
 
                 <div style="margin-top:20px">
                     <button class="btn btn-primary" type="submit" id="btn1">İşlem Ekle</button>

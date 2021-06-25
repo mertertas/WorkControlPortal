@@ -4,23 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d3e546b3782e4f9db2c678f407362cb9" Name="Diagram1" ZoomLevel="76">
+      <Diagram DiagramId="7e6900ed59ea44cbabceecfeb589c72c" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="EMSEYCRMDBModel.Cariler" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.Departmanlar" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.HizmetHareketleri" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Departmanlar" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.HizmetHareketleri" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="EMSEYCRMDBModel.Hizmetler" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.IslemHareketleri" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.Islemler" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.Kullanicilar" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="EMSEYCRMDBModel.Projeler" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.IslemHareketleri" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Kapamalar" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Kullanicilar" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EMSEYCRMDBModel.Projeler" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
         <AssociationConnector Association="EMSEYCRMDBModel.FK_Cariler_Departmanlar" ManuallyRouted="false" />
-        <AssociationConnector Association="EMSEYCRMDBModel.FK_Islemler_Cariler" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler" ManuallyRouted="false" />
         <AssociationConnector Association="EMSEYCRMDBModel.FK_Hizmetler_Departmanlar" ManuallyRouted="false" />
         <AssociationConnector Association="EMSEYCRMDBModel.FK_Kullanicilar_Departmanlar" ManuallyRouted="false" />
-        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Cariler" />
-        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler" />
-        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar" />
-        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Hizmetler" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Kullanicilar" ManuallyRouted="false" />
+        <AssociationConnector Association="EMSEYCRMDBModel.FK_HizmetHareketleri_Projeler" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

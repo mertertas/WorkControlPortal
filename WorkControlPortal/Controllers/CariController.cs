@@ -13,7 +13,7 @@ namespace WorkControlPortal.Controllers
     public class CariController : Controller
     {
         // GET: Cari
-        [Authorize(Roles = "admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Cari(/*int sayfa=1*/)
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())

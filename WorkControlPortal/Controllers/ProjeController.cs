@@ -7,10 +7,11 @@ using WorkControlPortal.Models;
 
 namespace WorkControlPortal.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProjeController : Controller
     {
         // GET: Proje
-        [Authorize(Roles = "admin")]
+
         public ActionResult Proje()
         {
             using (EMSEYCRMDBEntities context = new EMSEYCRMDBEntities())
@@ -33,7 +34,7 @@ namespace WorkControlPortal.Controllers
             }
         }
 
-        [Authorize(Roles = "admin")]
+
         [HttpGet]
         public ActionResult ProjeEkle()
         {
